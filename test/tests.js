@@ -2,17 +2,13 @@
 // http://visionmedia.github.com/mocha/
 // http://nodejs.org/docs/latest/api/assert.html
 
-var findParentDir = require('find-parent-dir');
-var configDir = findParentDir.sync(__dirname, 'config.js');
-var config = require(configDir+'config.js')
-var multiline = require('multiline')
 var assert = require('assert')
 
 var agave = require('agave').enable('av')
 
 var log = console.log.bind(console)
 
-var simpleCSP = require('simple-csp');
+var simpleCSP = require('../index.js');
 
 // Wrap and format mocha's default output
 var assertDeepEqual = function(actual, expected){

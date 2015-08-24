@@ -4,18 +4,19 @@ CSP By API significantly cuts down on CSP policy management by specifying common
 
 This package itself knows the required CSP policies for:
 
- - `twitter` Twitter oembed API
- - `mixpanel` Mixpanel
- - `googleFonts` Google Fonts
- - `stripe` Stripe
- - `ractive` Ractive
- - `typekit` Typekit
+ - `googleFonts` [Google Fonts](https://www.google.com/fonts)
+ - `mixpanel` [Mixpanel](https://mixpanel.com)
+ - `ractive` [Ractive.js](http://www.ractivejs.org/)
+ - `stripe` [Stripe](https://stripe.com)
+ - `twitter` [Twitter oembed API](https://dev.twitter.com/web/embedded-tweets)
+ - `typekit` [Typekit](https://typekit.com)
+ - `stormpath` [Stormpath](https://stormpath.com)
 
 Official policies are used wherever they're made available, and all are tested in a production app.
 
 ## Usage
 
-It doesn't implement CSP in node. It just **significantly** cuts down on:
+CSP By API doesn't implement CSP in node. Use an existing node CSP implementation like [Helmet](https://www.npmjs.com/package/helmet) or [express-csp](https://github.com/yahoo/express-csp) for that. Instead, CSP By API **significantly** cuts down on:
 
  - the amount of CSP research needed
  - the amount of CSP management
@@ -38,9 +39,7 @@ For your app. For example:
 
 	var policy = cspByAPI(basePolicy, ['twitter', 'mixpanel', 'googleFonts', 'stripe', 'typekit', 'ractive'])
 
-Then use that policy with an existing node CSP implementation like [Helmet](https://www.npmjs.com/package/helmet) or [express-csp](https://github.com/yahoo/express-csp).
-
-For example, using Express and [Helmet](https://www.npmjs.com/package/helmet):
+Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helmet):
 
 	var helmet = require('helmet');
 

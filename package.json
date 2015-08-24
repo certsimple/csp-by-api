@@ -1,19 +1,23 @@
 {
   "name": "csp-by-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Manage Certificate Security Policy (CSP) by specifying third party APIs by name",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "repository" : {
-  	"type" : "git",
-  	"url" : "https://github.com/mikemaccana/csp-by-api.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikemaccana/csp-by-api.git"
   },
   "keywords": [
-    "csp",
-    "content-security-policy"
+    "content-security-policy",
+    "csp"
   ],
   "author": "Mike MacCana <mike.maccana@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "agave": "^0.6.1",
+    "lodash": "^3.10.1"
+  }
 }

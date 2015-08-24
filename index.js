@@ -7,35 +7,6 @@ var CSP_UNSAFE_EVAL = "'unsafe-eval'";
 var CSP_UNSAFE_INLINE = "'unsafe-inline'";
 
 var appPolicies = {
-	// No public policy
-	twitter: {
-		defaultSrc: [CSP_SELF],
-		scriptSrc:  ['platform.twitter.com', 'syndication.twitter.com'],
-		styleSrc: ['platform.twitter.com'],
-		imgSrc: ['pbs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
-		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
-	},
-
-	// Stripe: https://support.stripe.com/questions/what-about-pci-dss-3-1
-	stripe: {
-		scriptSrc:  ['js.stripe.com'],
-		imgSrc: ['q.stripe.com'],
-		connectSrc: ['api.stripe.com'],
-		frameSrc: ['js.stripe.com']
-	},
-
-	// Typekit: see http://help.typekit.com/customer/portal/articles/1265956-content-security-policy-and-typekit
-	typekit: {
-		// use.typekit.net: needed for the typekit javascript
-		scriptSrc: ['use.typekit.net'],
-		// Unsafe inline needed for script tags
-		styleSrc: ['use.typekit.net'],
-		// data://: needed for embedded base64 encoded fonts
-		// use.typekit.net: needed for externally loaded fonts
-		fontSrc: ['data:', 'use.typekit.net'],
-		// p.typekit.net: used for tracking font usage and paying foundries
-		imgSrc: ['p.typekit.net']
-	},
 
 	// Google Fonts: no public policy
 	googleFonts: {
@@ -54,6 +25,43 @@ var appPolicies = {
 	// ractive uses eval
 	ractive: {
 		scriptSrc: [CSP_UNSAFE_EVAL]
+	},
+
+	// stormpath No public policy
+	stormpath: {
+		styleSrc: ['netdna.bootstrapcdn.com'],
+		scriptSrc: ['netdna.bootstrapcdn.com', 'ajax.googleapis.com'],
+		fontSrc: ['netdna.bootstrapcdn.com']
+	},
+
+	// Stripe: https://support.stripe.com/questions/what-about-pci-dss-3-1
+	stripe: {
+		scriptSrc:  ['js.stripe.com'],
+		imgSrc: ['q.stripe.com'],
+		connectSrc: ['api.stripe.com'],
+		frameSrc: ['js.stripe.com']
+	},
+
+	// No public policy
+	twitter: {
+		defaultSrc: [CSP_SELF],
+		scriptSrc:  ['platform.twitter.com', 'syndication.twitter.com'],
+		styleSrc: ['platform.twitter.com'],
+		imgSrc: ['pbs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
+		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
+	},
+
+	// Typekit: see http://help.typekit.com/customer/portal/articles/1265956-content-security-policy-and-typekit
+	typekit: {
+		// use.typekit.net: needed for the typekit javascript
+		scriptSrc: ['use.typekit.net'],
+		// Unsafe inline needed for script tags
+		styleSrc: ['use.typekit.net'],
+		// data://: needed for embedded base64 encoded fonts
+		// use.typekit.net: needed for externally loaded fonts
+		fontSrc: ['data:', 'use.typekit.net'],
+		// p.typekit.net: used for tracking font usage and paying foundries
+		imgSrc: ['p.typekit.net']
 	}
 }
 
