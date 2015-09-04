@@ -55,8 +55,8 @@ var appPolicies = {
 	typekit: {
 		// use.typekit.net: needed for the typekit javascript
 		scriptSrc: ['use.typekit.net'],
-		// Unsafe inline needed for script tags
-		styleSrc: ['use.typekit.net'],
+		// unsafe inline needed for font events to work
+		styleSrc: ['use.typekit.net', CSP_UNSAFE_INLINE],
 		// data://: needed for embedded base64 encoded fonts
 		// use.typekit.net: needed for externally loaded fonts
 		fontSrc: ['data:', 'use.typekit.net'],
