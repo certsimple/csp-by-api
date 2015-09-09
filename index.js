@@ -27,11 +27,11 @@ var appPolicies = {
 		scriptSrc: [CSP_UNSAFE_EVAL]
 	},
 
-	// stormpath No public policy
+	// stormpath No public policy. Uses hosted BootStrap and Google fonts
 	stormpath: {
-		styleSrc: ['netdna.bootstrapcdn.com'],
+		styleSrc: ['netdna.bootstrapcdn.com', 'fonts.googleapis.com'],
 		scriptSrc: ['netdna.bootstrapcdn.com', 'ajax.googleapis.com'],
-		fontSrc: ['netdna.bootstrapcdn.com']
+		fontSrc: ['netdna.bootstrapcdn.com', 'data:', 'fonts.googleapis.com', 'fonts.gstatic.com']
 	},
 
 	// Stripe: https://support.stripe.com/questions/what-about-pci-dss-3-1
