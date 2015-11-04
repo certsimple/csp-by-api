@@ -22,6 +22,11 @@ var appPolicies = {
 		connectSrc: ['api.mixpanel.com']
 	},
 
+	// gravatar No public policy.
+	gravatar: {
+		imgSrc: ['s.gravatar.com']
+	},
+
 	// ractive uses eval
 	ractive: {
 		scriptSrc: [CSP_UNSAFE_EVAL]

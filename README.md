@@ -1,10 +1,13 @@
-CSP By API significantly cuts down on CSP policy management by specifying common APIs by name.
+CSP By API significantly cuts down on CSP management by letting developers specify common APIs by name. These are then merged into the base policy to create the final CSP.
+
+In short: **this module is the difference between specifying 8 domains or 60**.
 
 ## Included policies
 
 This package itself knows the required CSP policies for:
 
  - `googleFonts` [Google Fonts](https://www.google.com/fonts)
+ - `gravatar` [Gravatar](https://en.gravatar.com/)
  - `mixpanel` [Mixpanel](https://mixpanel.com)
  - `ractive` [Ractive.js](http://www.ractivejs.org/)
  - `stripe` [Stripe](https://stripe.com)
