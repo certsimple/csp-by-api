@@ -52,7 +52,7 @@ var appPolicies = {
 		defaultSrc: [CSP_SELF],
 		scriptSrc:  ['platform.twitter.com', 'syndication.twitter.com'],
 		styleSrc: ['platform.twitter.com'],
-		imgSrc: ['pbs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
+		imgSrc: ['pbs.twimg.com', 'abs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
 		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
 	},
 

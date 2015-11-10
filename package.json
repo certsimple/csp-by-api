@@ -1,6 +1,6 @@
 {
   "name": "csp-by-api",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Manage Certificate Security Policy (CSP) by specifying third party APIs by name",
   "main": "index.js",
   "scripts": {
