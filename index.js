@@ -16,6 +16,10 @@ var appPolicies = {
 		fontSrc: ['data:', 'fonts.googleapis.com', 'fonts.gstatic.com']
 	},
 
+	vimeo: {
+		frameSrc: ['player.vimeo.com']
+	},
+
 	// Mixpanel: no public policy
 	mixpanel: {
 		scriptSrc:  ['cdn.mxpnl.com'],

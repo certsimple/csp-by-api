@@ -10,10 +10,11 @@ This package itself knows the required CSP policies for:
  - `gravatar` [Gravatar](https://en.gravatar.com/)
  - `mixpanel` [Mixpanel](https://mixpanel.com)
  - `ractive` [Ractive.js](http://www.ractivejs.org/)
+ - `stormpath` [Stormpath](https://stormpath.com)
  - `stripe` [Stripe](https://stripe.com)
  - `twitter` [Twitter oembed API](https://dev.twitter.com/web/embedded-tweets)
  - `typekit` [Typekit](https://typekit.com)
- - `stormpath` [Stormpath](https://stormpath.com)
+ - `vimeo` [Vimeo](https://vimeo.com)
 
 Official policies are used wherever they're made available, and all are tested in a production app.
 
