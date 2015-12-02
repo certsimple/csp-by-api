@@ -71,6 +71,10 @@ var appPolicies = {
 		fontSrc: ['data:', 'use.typekit.net'],
 		// p.typekit.net: used for tracking font usage and paying foundries
 		imgSrc: ['p.typekit.net']
+	},
+
+	clearbit: {
+		imgSrc: ['logo.clearbit.com']
 	}
 }
 

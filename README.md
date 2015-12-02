@@ -6,6 +6,7 @@ In short: **this module is the difference between specifying 8 domains or 60**.
 
 This package itself knows the required CSP policies for:
 
+ - `clearbit` [Clearbit](https://clearbit.com/)
  - `googleFonts` [Google Fonts](https://www.google.com/fonts)
  - `gravatar` [Gravatar](https://en.gravatar.com/)
  - `mixpanel` [Mixpanel](https://mixpanel.com)
