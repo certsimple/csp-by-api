@@ -66,6 +66,10 @@ var appPolicies = {
 		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
 	},
 
+	twitterAnalytics: {
+		imgSrc: ['t.co', 'analytics.twitter.com']
+	},
+
 	// Typekit: see http://help.typekit.com/customer/portal/articles/1265956-content-security-policy-and-typekit
 	typekit: {
 		// use.typekit.net: needed for the typekit javascript

@@ -15,6 +15,7 @@ This package itself knows the required CSP policies for:
  - `stormpath` [Stormpath](https://stormpath.com)
  - `stripe` [Stripe](https://stripe.com)
  - `twitter` [Twitter oembed API](https://dev.twitter.com/web/embedded-tweets)
+ - `twitterAnalytics` [Twitter analytics](https://analytics.twitter.com)
  - `typekit` [Typekit](https://typekit.com)
  - `vimeo` [Vimeo](https://vimeo.com)
 
