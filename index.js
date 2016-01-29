@@ -23,7 +23,8 @@ var appPolicies = {
 	// Mixpanel: no public policy
 	mixpanel: {
 		scriptSrc:  ['cdn.mxpnl.com'],
-		connectSrc: ['api.mixpanel.com']
+		connectSrc: ['api.mixpanel.com'],
+		imgSrc: ['cdn.mxpnl.com']
 	},
 
 	// gravatar No public policy.
