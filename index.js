@@ -27,6 +27,11 @@ var appPolicies = {
 		imgSrc: ['cdn.mxpnl.com']
 	},
 
+	// Magic Signup: no public policy
+	magicSignup: {
+		scriptSrc:  ['magicsignup.com'],
+	},
+
 	// gravatar No public policy.
 	gravatar: {
 		imgSrc: ['s.gravatar.com']

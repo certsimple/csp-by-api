@@ -9,6 +9,7 @@ This package itself knows the required CSP policies for:
  - `clearbit` [Clearbit](https://clearbit.com/)
  - `googleFonts` [Google Fonts](https://www.google.com/fonts)
  - `gravatar` [Gravatar](https://en.gravatar.com/)
+ - `magicSignup` [Magic Signup](https://magicsignup.com)
  - `mixpanel` [Mixpanel](https://mixpanel.com)
  - `ractive` [Ractive.js](http://www.ractivejs.org/)
  - `stormpath` [Stormpath](https://stormpath.com)
