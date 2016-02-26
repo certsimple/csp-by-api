@@ -89,7 +89,7 @@ var appPolicies = {
 }
 
 var simpleCSP = function(currentPolicy, appNames){
-	var combined = currentPolicy || {};
+	var combinedPolicy = currentPolicy || {};
 	appNames.forEach(function(appName){
 		var appPolicy = appPolicies[appName];
 		if ( ! appPolicy ) {
@@ -97,15 +97,15 @@ var simpleCSP = function(currentPolicy, appNames){
 			throw new Error('missing CSP policy '+appName)
 		}
 		appPolicy.avforEach(function(key){
-			combined[key] = lodash.union(combined[key], appPolicy[key])
+			combinedPolicy[key] = lodash.union(combinedPolicy[key], appPolicy[key])
 		})
 	})
-	combined.avforEach(function(key){
-		if ( avkind(combined[key]) === 'Array' ) {
-			combined[key] = combined[key].sort();
+	combinedPolicy.avforEach(function(key){
+		if ( avkind(combinedPolicy[key]) === 'Array' ) {
+			combinedPolicy[key] = combinedPolicy[key].sort();
 		}
 	})
-	return combined
+	return combinedPolicy
 }
 
 module.exports = simpleCSP;
