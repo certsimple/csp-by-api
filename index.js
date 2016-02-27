@@ -1,94 +1,52 @@
 var agave = require('agave').enable('av')
+require('babel-polyfill');
 var lodash = require('lodash');
+var appPolicies = require(__dirname+'/policies.js');
 
-// CSP uses strings with quotes inside them for special variables.
-var CSP_SELF = "'self'";
-var CSP_UNSAFE_EVAL = "'unsafe-eval'";
-var CSP_UNSAFE_INLINE = "'unsafe-inline'";
+var log = console.log.bind(console);
 
-var appPolicies = {
-
-	// Google Fonts: no public policy
-	googleFonts: {
-		// Unsafe inline needed for script tags
-		styleSrc: ['fonts.googleapis.com'],
-		// data://: needed for embedded base64 encoded fonts
-		fontSrc: ['data:', 'fonts.googleapis.com', 'fonts.gstatic.com']
-	},
-
-	vimeo: {
-		frameSrc: ['player.vimeo.com']
-	},
-
-	// Mixpanel: no public policy
-	mixpanel: {
-		scriptSrc:  ['cdn.mxpnl.com'],
-		connectSrc: ['api.mixpanel.com'],
-		imgSrc: ['cdn.mxpnl.com']
-	},
-
-	// Magic Signup: no public policy
-	magicSignup: {
-		scriptSrc:  ['magicsignup.com'],
-	},
-
-	// gravatar No public policy.
-	gravatar: {
-		imgSrc: ['s.gravatar.com']
-	},
-
-	// ractive uses eval
-	ractive: {
-		scriptSrc: [CSP_UNSAFE_EVAL]
-	},
-
-	// stormpath No public policy. Uses hosted BootStrap and Google fonts
-	stormpath: {
-		styleSrc: ['netdna.bootstrapcdn.com', 'fonts.googleapis.com'],
-		scriptSrc: ['netdna.bootstrapcdn.com', 'ajax.googleapis.com'],
-		fontSrc: ['netdna.bootstrapcdn.com', 'data:', 'fonts.googleapis.com', 'fonts.gstatic.com']
-	},
-
-	// Stripe: https://support.stripe.com/questions/what-about-pci-dss-3-1
-	stripe: {
-		scriptSrc:  ['js.stripe.com'],
-		imgSrc: ['q.stripe.com'],
-		connectSrc: ['api.stripe.com'],
-		frameSrc: ['js.stripe.com']
-	},
-
-	// No public policy
-	twitter: {
-		defaultSrc: [CSP_SELF],
-		scriptSrc:  ['platform.twitter.com', 'syndication.twitter.com'],
-		styleSrc: ['platform.twitter.com'],
-		imgSrc: ['pbs.twimg.com', 'abs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
-		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
-	},
-
-	twitterAnalytics: {
-		imgSrc: ['t.co', 'analytics.twitter.com']
-	},
-
-	// Typekit: see http://help.typekit.com/customer/portal/articles/1265956-content-security-policy-and-typekit
-	typekit: {
-		// use.typekit.net: needed for the typekit javascript
-		scriptSrc: ['use.typekit.net'],
-		// unsafe inline needed for font events to work
-		styleSrc: ['use.typekit.net', CSP_UNSAFE_INLINE],
-		// data://: needed for embedded base64 encoded fonts
-		// use.typekit.net: needed for externally loaded fonts
-		fontSrc: ['data:', 'use.typekit.net'],
-		// p.typekit.net: used for tracking font usage and paying foundries
-		imgSrc: ['p.typekit.net']
-	},
-
-	clearbit: {
-		imgSrc: ['logo.clearbit.com']
+var domainToWildcard = function(domain){
+	var parts = domain.split('.')
+	var wildcard = null
+	if ( parts.length > 1 ) {
+		wildcard = '*.'+parts.splice(1).join('.')
 	}
+	return wildcard
 }
 
-var simpleCSP = function(currentPolicy, appNames){
+var removeDuplicates = function(policy){
+	// After the sort, '*.domain.com' are now first
+	policy.avforEach(function(key){
+		if ( avkind(policy[key]) === 'Array' ) {
+			policy[key] = policy[key].sort();
+		}
+	})
+
+	// We will now remove any FQDNs where the wildcard already exists
+	var uniquePolicy = {}
+	policy.avforEach(function(key){
+		var values = policy[key]
+		if ( avkind(values) === 'Array' ) {
+			if ( ! uniquePolicy[key] ) {
+				uniquePolicy[key] = []
+			}
+			values.forEach(function(value){
+				var wildCardParent = domainToWildcard(value)
+				if ( wildCardParent && uniquePolicy[key].includes(wildCardParent) ) {
+					// log('Skipping', value, 'as we already have', wildCardParent)
+					return
+				}
+				uniquePolicy[key].push(value)
+			})
+		} else {
+			// Not an array, so just copy
+			uniquePolicy[key] = policy[key]
+		}
+	})
+	return uniquePolicy
+}
+
+var makeContentSecurityPolicy = function(currentPolicy, appNames){
 	var combinedPolicy = currentPolicy || {};
 	appNames.forEach(function(appName){
 		var appPolicy = appPolicies[appName];
@@ -100,12 +58,8 @@ var simpleCSP = function(currentPolicy, appNames){
 			combinedPolicy[key] = lodash.union(combinedPolicy[key], appPolicy[key])
 		})
 	})
-	combinedPolicy.avforEach(function(key){
-		if ( avkind(combinedPolicy[key]) === 'Array' ) {
-			combinedPolicy[key] = combinedPolicy[key].sort();
-		}
-	})
-	return combinedPolicy
+	var uniquePolicy = removeDuplicates(combinedPolicy)
+	return uniquePolicy
 }
 
-module.exports = simpleCSP;
+module.exports = makeContentSecurityPolicy;

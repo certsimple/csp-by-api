@@ -8,19 +8,13 @@ var agave = require('agave').enable('av')
 
 var log = console.log.bind(console)
 
-var simpleCSP = require('../index.js');
-
-// Wrap and format mocha's default output
-var assertDeepEqual = function(actual, expected){
-	assert.equal(JSON.stringify(actual, null, 2), JSON.stringify(expected, null, 2))
-}
+var makeContentSecurityPolicy = require('../index.js');
 
 var CSP_SELF = "'self'";
 var CSP_UNSAFE_EVAL = "'unsafe-eval'";
 var CSP_UNSAFE_INLINE = "'unsafe-inline'";
 
 suite('combining policies', function(){
-	this.timeout(5 * 1000);
 	test('returns correct result for common services', function(){
 		var basePolicy = {
 			defaultSrc: [CSP_SELF],
@@ -34,72 +28,82 @@ suite('combining policies', function(){
 			reportOnly: true
 		}
 
-		var actual = simpleCSP(basePolicy, ['twitter', 'mixpanel', 'googleFonts', 'typekit', 'stripe', 'ractive'])
+		var actual = makeContentSecurityPolicy(basePolicy, ['twitter', 'mixpanel', 'googleFonts', 'typekit', 'stripe', 'ractive'])
+		var expected = {
+			defaultSrc: ["'self'"],
+			scriptSrc: ["'self'", "'unsafe-eval'", 'cdn.mxpnl.com', 'js.stripe.com', 'platform.twitter.com', 'syndication.twitter.com', 'use.typekit.net'],
+			styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com', 'platform.twitter.com', 'use.typekit.net'],
+			fontSrc: ['data:', 'fonts.googleapis.com', 'fonts.gstatic.com', 'use.typekit.net'],
+			imgSrc: ["'self'", 'abs.twimg.com', 'cdn.mxpnl.com', 'data:', 'p.typekit.net', 'pbs.twimg.com', 'platform.twitter.com', 'q.stripe.com',
+				'syndication.twitter.com'
+			],
+			connectSrc: ["'self'", 'api.mixpanel.com', 'api.stripe.com'],
+			frameSrc: ['js.stripe.com', 'platform.twitter.com', 'syndication.twitter.com'],
+			reportUri: '/csp-violation',
+			reportOnly: true
+		}
+		expected.avforEach(function(key){
+			if ( avkind(expected[key]) === 'Array' ) {
+				expected[key] = expected[key].sort();
+			}
+		})
+		assert.deepEqual(actual, expected)
+	});
+
+	test('throws if non-existent policy specified', function(){
+		var shouldThrow = function(){
+			makeContentSecurityPolicy({}, ['unknown-app'])
+		}
+		assert.throws(shouldThrow);
+	});
+
+	test('remove specific domains when combined with a wildcard', function(){
+		var basePolicy = {
+			defaultSrc: [CSP_SELF],
+			scriptSrc:  [CSP_SELF, '*.twitter.com'],
+			styleSrc: [CSP_SELF, CSP_UNSAFE_INLINE],
+			fontSrc: [],
+			imgSrc: [CSP_SELF, 'data:'],
+			connectSrc: [CSP_SELF],
+			frameSrc: [],
+			reportUri: "/csp-violation",
+			reportOnly: true
+		}
+		var actual = makeContentSecurityPolicy(basePolicy, ['twitter'])
 		var expected = {
 			"defaultSrc": [
 				"'self'"
 			],
 			"scriptSrc": [
 				"'self'",
-				"'unsafe-eval'",
-				"cdn.mxpnl.com",
-				"js.stripe.com",
-				"platform.twitter.com",
-				"syndication.twitter.com",
-				"use.typekit.net"
+				"*.twitter.com" // I.e., there's only the wildcard.
 			],
 			"styleSrc": [
 				"'self'",
 				"'unsafe-inline'",
-				"fonts.googleapis.com",
-				"platform.twitter.com",
-				"use.typekit.net"
+				"platform.twitter.com"
 			],
-			"fontSrc": [
-				"data:",
-				"fonts.googleapis.com",
-				"fonts.gstatic.com",
-				"use.typekit.net"
-			],
+			"fontSrc": [],
 			"imgSrc": [
 				"'self'",
+				"abs.twimg.com",
 				"data:",
-				"p.typekit.net",
 				"pbs.twimg.com",
 				"platform.twitter.com",
-				"q.stripe.com",
 				"syndication.twitter.com"
 			],
 			"connectSrc": [
-				"'self'",
-				"api.mixpanel.com",
-				"api.stripe.com"
+				"'self'"
 			],
 			"frameSrc": [
-				"js.stripe.com",
 				"platform.twitter.com",
 				"syndication.twitter.com"
 			],
 			"reportUri": "/csp-violation",
 			"reportOnly": true
 		}
-
-		expected.avforEach(function(key){
-			if ( avkind(expected[key]) === 'Array' ) {
-				expected[key] = expected[key].sort();
-			}
-		})
-
-		assertDeepEqual(actual, expected)
-
+		assert.deepEqual(actual, expected)
 	});
-
-	test('exits hard if non-existent policy specified', function(){
-		var shouldThrow = function(){
-			simpleCSP({}, ['unknown-app'])
-		}
-		assert.throws(shouldThrow);
-	})
 });
 
 

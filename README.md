@@ -44,7 +44,9 @@ For your app. For example:
 		reportOnly: true
 	}
 
-	var policy = cspByAPI(basePolicy, ['twitter', 'mixpanel', 'googleFonts', 'stripe', 'typekit', 'ractive'])
+	var policy = cspByAPI(basePolicy, ['twitter', 'mixpanel', 'googleFonts'])
+
+This will intelligently combine the specific policies for those apps, as well as your own basePolicy, into a single policy.
 
 Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helmet):
 
@@ -87,10 +89,3 @@ For **Twitter**, you'll also need this meta tag - see https://dev.twitter.com/we
 
 	<meta name="twitter:widgets:csp" content="on">
 
-## TODO
-
-simple-csp currently produces a merged, sorted, non-redundant policy.
-
-It would be clever to merge eg 'example.com' and '*.example.com' intelligently.
-
-However all CSP options for apps already use explicit domains.
