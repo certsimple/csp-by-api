@@ -10,7 +10,91 @@ module.exports = {
 		// Unsafe inline needed for script tags
 		styleSrc: ['fonts.googleapis.com'],
 		// data://: needed for embedded base64 encoded fonts
-		fontSrc: ['data:', 'fonts.googleapis.com', 'fonts.gstatic.com']
+		fontSrc: ['data:', 'fonts.googleapis.com', 'fonts.gstatic.com','themes.googleusercontent.com']
+	},
+
+	perfectAudience: {
+		// From Tony at support@perfectaudience.com
+		// Here are the URLs that we use for scripts that you should be white listing:
+		"scriptSrc": [
+			"pixel.prfct.co",
+			// Since perfectAudience is a retargeting platform there's lot of third party APIs
+			"ads.yahoo.com",
+			"analytics.twitter.com",
+			"cm.g.doubleclick.net",
+			"p.univide.com",
+			"www.facebook.com"
+		]
+	},
+
+	googleAnalytics: {
+		"scriptSrc": [
+			"https://ajax.googleapis.com",
+			"https://www.googleadservices.com",
+			"https://www.google-analytics.com"
+		],
+
+		"connectSrc": [
+			"https://www.google-analytics.com"
+		],
+
+		"imgSrc": [
+			"https://*.googleapis.com",
+			"https://*.g.doubleclick.net",
+			"https://www.google.co.in",
+			"https://www.google.it",
+			"https://www.google.co.uk",
+			"https://www.google.de",
+			"https://www.google.fr",
+			"https://www.google.ca",
+			"https://www.google.es",
+			"https://www.google.com.pk",
+			"https://www.google.com.tw",
+			"https://www.google.com.ph",
+			"https://www.google.com.ua",
+			"https://www.google.co.kr",
+			"https://www.google.com",
+			"https://www.google.com.bd",
+			"https://www.google.com.bh",
+			"https://www.google.com.br",
+			"https://www.google.com.eg",
+			"https://www.google.nl",
+			"https://www.google.by",
+			"https://www.google.co.za",
+			"https://www.google.fi",
+			"https://www.google.be",
+			"https://www.google.co.in",
+			"https://www.google.com.my",
+			"https://www.google.ch",
+			"https://www.google.co.th",
+			"https://www.google.co.uk",
+			"https://www.google.cl",
+			"https://www.google.bg",
+			"https://www.google.hu",
+			"https://www.google.com.sa",
+			"https://www.google.com.sg",
+			"https://www.google.ie",
+			"https://www.google.ae",
+			"https://www.google.dk",
+			"https://www.google.cz",
+			"https://www.google.com.mx",
+			"https://www.google.com.sv",
+			"https://www.google.co.in",
+			"https://www.google.se",
+			"https://www.google.sk",
+			"https://www.google.com.ar",
+			"https://www.google.com.uy",
+			"https://www.google.co.nz",
+			"https://www.google.co.il",
+			"https://www.google.com.hk",
+			"https://www.google.com.vn",
+			"https://www.google.com.au",
+			"https://www.google.com.tr",
+			"https://www.google.co.jp",
+			"https://www.google.rs",
+			"https://www.google.ro",
+			"https://www.google.pl"
+		]
 	},
 
 	vimeo: {

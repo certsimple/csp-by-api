@@ -7,10 +7,12 @@ In short: **this module is the difference between specifying 8 domains or 60**.
 This package itself knows the required CSP policies for:
 
  - `clearbit` [Clearbit](https://clearbit.com/)
+ - `googleAnalytics` [Google Analytics](https://www.google.co.uk/analytics/)
  - `googleFonts` [Google Fonts](https://www.google.com/fonts)
  - `gravatar` [Gravatar](https://en.gravatar.com/)
  - `magicSignup` [Magic Signup](https://magicsignup.com)
  - `mixpanel` [Mixpanel](https://mixpanel.com)
+ - `perfectAudience` [Perfect Audience](http://www.perfectaudience.com/)
  - `ractive` [Ractive.js](http://www.ractivejs.org/)
  - `stormpath` [Stormpath](https://stormpath.com)
  - `stripe` [Stripe](https://stripe.com)
