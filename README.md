@@ -12,6 +12,7 @@ This package itself knows the required CSP policies for:
  - `gravatar` [Gravatar](https://en.gravatar.com/)
  - `magicSignup` [Magic Signup](https://magicsignup.com)
  - `mixpanel` [Mixpanel](https://mixpanel.com)
+ - `olark` [Olark](https://olark.com)
  - `perfectAudience` [Perfect Audience](http://www.perfectaudience.com/)
  - `ractive` [Ractive.js](http://www.ractivejs.org/)
  - `stormpath` [Stormpath](https://stormpath.com)

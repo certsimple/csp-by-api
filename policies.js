@@ -166,5 +166,10 @@ module.exports = {
 
 	clearbit: {
 		imgSrc: ['logo.clearbit.com']
+	},
+
+	olark: {
+		// From actual testing
+		scriptSrc: [CSP_UNSAFE_INLINE],
 	}
 }
