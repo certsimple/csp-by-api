@@ -126,7 +126,7 @@ module.exports = {
 		// Eg, api, static, start-1.olark.com. Wildcard because there might be start-2 in future.
 		scriptSrc: ['*.olark.com', CSP_UNSAFE_INLINE],
 		connectSrc: ['*.olark.com'], // Always <number>-events.olark.com
-		styleSrc: [CSP_UNSAFE_INLINE],
+		styleSrc: [CSP_UNSAFE_INLINE, 'static.olark.com'],
 		frameSrc: ['static.olark.com'],
 		imgSrc: ['log.olark.com'],
 		mediaSrc: ['static.olark.com']
