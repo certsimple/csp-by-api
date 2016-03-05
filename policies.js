@@ -121,6 +121,10 @@ module.exports = {
 	olark: {
 		// From actual testing
 		scriptSrc: ['static.olark.com', CSP_UNSAFE_INLINE],
+		connectSrc: ['*.olark.com'], // Always <number>-events.olark.com
+		styleSrc: [CSP_UNSAFE_INLINE],
+		frameSrc: ['static.olark.com'],
+		imgSrc: ['log.olark.com']
 	},
 
 	// ractive uses eval
