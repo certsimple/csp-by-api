@@ -5,6 +5,10 @@ var CSP_UNSAFE_INLINE = "'unsafe-inline'";
 
 module.exports = {
 
+	clearbit: {
+		imgSrc: ['logo.clearbit.com']
+	},
+
 	// Google Fonts: no public policy
 	googleFonts: {
 		// Unsafe inline needed for script tags
@@ -97,8 +101,9 @@ module.exports = {
 		]
 	},
 
-	vimeo: {
-		frameSrc: ['player.vimeo.com']
+	// gravatar No public policy.
+	gravatar: {
+		imgSrc: ['s.gravatar.com']
 	},
 
 	// Mixpanel: no public policy
@@ -113,9 +118,9 @@ module.exports = {
 		scriptSrc:  ['magicsignup.com'],
 	},
 
-	// gravatar No public policy.
-	gravatar: {
-		imgSrc: ['s.gravatar.com']
+	olark: {
+		// From actual testing
+		scriptSrc: ['static.olark.com', CSP_UNSAFE_INLINE],
 	},
 
 	// ractive uses eval
@@ -164,12 +169,8 @@ module.exports = {
 		imgSrc: ['p.typekit.net']
 	},
 
-	clearbit: {
-		imgSrc: ['logo.clearbit.com']
-	},
-
-	olark: {
-		// From actual testing
-		scriptSrc: ['static.olark.com', CSP_UNSAFE_INLINE],
+	vimeo: {
+		frameSrc: ['player.vimeo.com']
 	}
+
 }
