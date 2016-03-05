@@ -119,12 +119,17 @@ module.exports = {
 	},
 
 	olark: {
-		// From actual testing
-		scriptSrc: ['static.olark.com', CSP_UNSAFE_INLINE],
+		// https://www.olark.com/help/csp-support
+		// But that's missing an actual policy.
+		// So below is from from actual testing
+		//
+		// Eg, api, static, start-1.olark.com. Wildcard because there might be start-2 in future.
+		scriptSrc: ['*.olark.com', CSP_UNSAFE_INLINE],
 		connectSrc: ['*.olark.com'], // Always <number>-events.olark.com
 		styleSrc: [CSP_UNSAFE_INLINE],
 		frameSrc: ['static.olark.com'],
-		imgSrc: ['log.olark.com']
+		imgSrc: ['log.olark.com'],
+		mediaSrc: ['static.olark.com']
 	},
 
 	// ractive uses eval
