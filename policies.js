@@ -170,6 +170,6 @@ module.exports = {
 
 	olark: {
 		// From actual testing
-		scriptSrc: [CSP_UNSAFE_INLINE],
+		scriptSrc: ['static.olark.com', CSP_UNSAFE_INLINE],
 	}
 }
