@@ -128,7 +128,7 @@ module.exports = {
 		connectSrc: ['*.olark.com'], // Always <number>-events.olark.com
 		styleSrc: [CSP_UNSAFE_INLINE, 'static.olark.com'],
 		frameSrc: ['static.olark.com'],
-		imgSrc: ['log.olark.com'],
+		imgSrc: ['log.olark.com', 'static.olark.com'],
 		mediaSrc: ['static.olark.com']
 	},
 
