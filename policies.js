@@ -146,7 +146,7 @@ module.exports = {
 
 	// Stripe: https://support.stripe.com/questions/what-about-pci-dss-3-1
 	stripe: {
-		scriptSrc:  ['js.stripe.com'],
+		scriptSrc:  ['js.stripe.com', 'api.stripe.com'],
 		imgSrc: ['q.stripe.com'],
 		connectSrc: ['api.stripe.com'],
 		frameSrc: ['js.stripe.com']
