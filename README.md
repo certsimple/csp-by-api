@@ -36,6 +36,7 @@ For your app. For example:
 
 	var cspByAPI = require('csp-by-api')
 
+	// This is the policy for your own app only. You don't need to worry about third parties at all!
 	var basePolicy = {
 		defaultSrc: [CSP_SELF],
 		scriptSrc:  [CSP_SELF],
@@ -48,9 +49,12 @@ For your app. For example:
 		reportOnly: true
 	}
 
-	var policy = cspByAPI(basePolicy, ['twitter', 'mixpanel', 'googleFonts'])
-
-This will intelligently combine the specific policies for those apps, as well as your own basePolicy, into a single policy.
+	// Then add the apps you use. csp-by-api will combine them for you.
+	var policy = cspByAPI(basePolicy, [
+		'twitter',
+		'mixpanel',
+		'googleFonts'
+	]);
 
 Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helmet):
 
