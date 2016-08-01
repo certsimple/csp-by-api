@@ -6,6 +6,7 @@ In short: **this module is the difference between specifying 8 domains or 60**.
 
 This package itself knows the required CSP policies for:
 
+ - `braintree` [Braintree Payments](https://developers.braintreepayments.com/reference/client-reference/javascript/v2/best-practices#using-braintree.js-with-a-content-security-policy)
  - `clearbit` [Clearbit](https://clearbit.com/)
  - `googleAnalytics` [Google Analytics](https://www.google.co.uk/analytics/)
  - `googleFonts` [Google Fonts](https://www.google.com/fonts)

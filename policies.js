@@ -1,12 +1,36 @@
 // CSP uses strings with quotes inside them for special variables.
-var CSP_SELF = "'self'";
-var CSP_UNSAFE_EVAL = "'unsafe-eval'";
-var CSP_UNSAFE_INLINE = "'unsafe-inline'";
+const CSP_SELF = "'self'",
+	CSP_UNSAFE_EVAL = "'unsafe-eval'",
+	CSP_UNSAFE_INLINE = "'unsafe-inline'",
+	DATA = "data:"
 
 module.exports = {
 
 	clearbit: {
 		imgSrc: ['logo.clearbit.com']
+	},
+
+	// Braintree Payments: https://developers.braintreepayments.com/reference/client-reference/javascript/v2/best-practices#using-braintree.js-with-a-content-security-policy
+	braintree: {
+		"scriptSrc": [
+			"js.braintreegateway.com",
+			"assets.braintreegateway.com",
+			"api.braintreegateway.com",
+			"api.sandbox.braintreegateway.com",
+			"www.paypalobjects.com",
+			"client-analytics.sandbox.braintreegateway.com",
+			"client-analytics.braintreegateway.com"
+		],
+		styleSrc: [CSP_UNSAFE_INLINE],
+		imgSrc: [
+			"assets.braintreegateway.com",
+			"checkout.paypal.com",
+			DATA
+		],
+		"childSrc": [
+			"assets.braintreegateway.com",
+			"c.paypal.com"
+		]
 	},
 
 	// Google Fonts: no public policy
