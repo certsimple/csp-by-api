@@ -1,6 +1,6 @@
 {
   "name": "csp-by-api",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Easily build a Certificate Security Policy (CSP) by specifying APIs by name",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "agave": "^0.6.1",
+    "agave": "^2.0.0",
     "babel-polyfill": "^6.5.0",
     "lodash": "^3.10.1"
   }

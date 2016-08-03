@@ -1,7 +1,8 @@
-var agave = require('agave').enable('av')
+var agave = require('agave')('av'),
+	lodash = require('lodash'),
+	appPolicies = require(__dirname+'/policies.js');
+
 require('babel-polyfill');
-var lodash = require('lodash');
-var appPolicies = require(__dirname+'/policies.js');
 
 var log = console.log.bind(console);
 
