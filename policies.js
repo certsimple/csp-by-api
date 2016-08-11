@@ -179,7 +179,7 @@ module.exports = {
 	// No public policy
 	twitter: {
 		defaultSrc: [CSP_SELF],
-		scriptSrc:  ['platform.twitter.com', 'syndication.twitter.com',  'analytics.twitter.com'],
+		scriptSrc:  ['platform.twitter.com', 'cdn.syndication.twimg.com', 'syndication.twitter.com',  'analytics.twitter.com'],
 		styleSrc: ['platform.twitter.com'],
 		imgSrc: ['pbs.twimg.com', 'abs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
 		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
