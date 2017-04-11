@@ -139,7 +139,7 @@ module.exports = {
 
 	// Magic Signup: no public policy
 	magicSignup: {
-		scriptSrc:  ['magicsignup.com'],
+		scriptSrc:  ['*.magicsignup.com']
 	},
 
 	olark: {
@@ -161,6 +161,10 @@ module.exports = {
 		scriptSrc: [CSP_UNSAFE_EVAL]
 	},
 
+	rollbar: {
+		scriptSrc: ['cdnjs.cloudflare.com']
+	},
+
 	// stormpath No public policy. Uses hosted BootStrap and Google fonts
 	stormpath: {
 		styleSrc: ['netdna.bootstrapcdn.com', 'fonts.googleapis.com'],
@@ -179,7 +183,7 @@ module.exports = {
 	// No public policy
 	twitter: {
 		defaultSrc: [CSP_SELF],
-		scriptSrc:  ['platform.twitter.com', 'cdn.syndication.twimg.com', 'syndication.twitter.com',  'analytics.twitter.com'],
+		scriptSrc:  ['static.ads-twitter.com','platform.twitter.com', 'cdn.syndication.twimg.com', 'syndication.twitter.com',  'analytics.twitter.com'],
 		styleSrc: ['platform.twitter.com'],
 		imgSrc: ['pbs.twimg.com', 'abs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
 		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
