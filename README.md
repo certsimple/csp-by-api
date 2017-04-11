@@ -16,6 +16,7 @@ This package itself knows the required CSP policies for:
  - `olark` [Olark](https://olark.com)
  - `perfectAudience` [Perfect Audience](http://www.perfectaudience.com/)
  - `ractive` [Ractive.js](http://www.ractivejs.org/)
+ - `rollbar` [Rollbar](https://rollbar.com)
  - `stormpath` [Stormpath](https://stormpath.com)
  - `stripe` [Stripe](https://stripe.com)
  - `twitter` [Twitter oembed API](https://dev.twitter.com/web/embedded-tweets)
