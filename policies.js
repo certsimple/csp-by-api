@@ -162,7 +162,7 @@ module.exports = {
 	},
 
 	rollbar: {
-		scriptSrc: ['cdnjs.cloudflare.com']
+		scriptSrc: ['cdnjs.cloudflare.com', 'api.rollbar.com']
 	},
 
 	// stormpath No public policy. Uses hosted BootStrap and Google fonts
