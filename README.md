@@ -60,7 +60,9 @@ Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helm
 
 	var helmet = require('helmet');
 
-	app.use(helmet.contentSecurityPolicy(policy));
+	app.use(helmet.contentSecurityPolicy({
+		directives: policy
+	}));
 
 ## Need another API?
 
@@ -80,7 +82,7 @@ In your server-side template:
 
 	{{# serverVars }}
 		<script class="server-vars" type="application/x-configuration">
-		  {{{ . }}}
+			{{{ . }}}
 		</script>
 	{{/ serverVars }}
 
