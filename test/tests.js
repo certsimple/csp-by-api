@@ -4,7 +4,7 @@
 
 var assert = require('assert')
 
-var agave = require('agave').enable('av')
+var agave = require('agave')('av');
 
 var log = console.log.bind(console)
 
@@ -14,11 +14,11 @@ var CSP_SELF = "'self'";
 var CSP_UNSAFE_EVAL = "'unsafe-eval'";
 var CSP_UNSAFE_INLINE = "'unsafe-inline'";
 
-suite('combining policies', function(){
-	test('returns correct result for common services', function(){
+suite('combining policies', function() {
+	test('returns correct result for common services', function() {
 		var basePolicy = {
 			defaultSrc: [CSP_SELF],
-			scriptSrc:  [CSP_SELF],
+			scriptSrc: [CSP_SELF],
 			styleSrc: [CSP_SELF, CSP_UNSAFE_INLINE],
 			fontSrc: [],
 			imgSrc: [CSP_SELF, 'data:'],
@@ -42,25 +42,25 @@ suite('combining policies', function(){
 			reportUri: '/csp-violation',
 			reportOnly: true
 		}
-		expected.avforEach(function(key){
-			if ( avkind(expected[key]) === 'Array' ) {
+		expected.avforEach(function(key) {
+			if (avkind(expected[key]) === 'Array') {
 				expected[key] = expected[key].sort();
 			}
 		})
 		assert.deepEqual(actual, expected)
 	});
 
-	test('throws if non-existent policy specified', function(){
-		var shouldThrow = function(){
+	test('throws if non-existent policy specified', function() {
+		var shouldThrow = function() {
 			makeContentSecurityPolicy({}, ['unknown-app'])
 		}
 		assert.throws(shouldThrow);
 	});
 
-	test('remove specific domains when combined with a wildcard', function(){
+	test('remove specific domains when combined with a wildcard', function() {
 		var basePolicy = {
 			defaultSrc: [CSP_SELF],
-			scriptSrc:  [CSP_SELF, '*.twitter.com'],
+			scriptSrc: [CSP_SELF, '*.twitter.com'],
 			styleSrc: [CSP_SELF, CSP_UNSAFE_INLINE],
 			fontSrc: [],
 			imgSrc: [CSP_SELF, 'data:'],
@@ -104,6 +104,35 @@ suite('combining policies', function(){
 		}
 		assert.deepEqual(actual, expected)
 	});
+
+	test('can provide custom policies instead of names', function() {
+		var basePolicy = {
+			defaultSrc: [CSP_SELF],
+			scriptSrc: [CSP_SELF],
+			styleSrc: [CSP_SELF, CSP_UNSAFE_INLINE],
+			fontSrc: [],
+			imgSrc: [CSP_SELF, 'data:'],
+			connectSrc: [CSP_SELF],
+			frameSrc: [],
+			reportUri: "/csp-violation",
+			reportOnly: true
+		}
+
+		var stripe = {
+			scriptSrc: ['js.stripe.com', 'api.stripe.com'],
+			imgSrc: ['q.stripe.com'],
+			connectSrc: ['api.stripe.com'],
+			frameSrc: ['js.stripe.com']
+		};
+
+		var rollbar = {
+			scriptSrc: ['cdnjs.cloudflare.com'],
+			connectSrc: ['api.rollbar.com']
+		};
+
+		var before = makeContentSecurityPolicy(basePolicy, ['stripe', 'rollbar'])
+		var specifiedAsCustomPolicy = makeContentSecurityPolicy(basePolicy, [stripe, rollbar])
+
+		assert.deepEqual(before, specifiedAsCustomPolicy)
+	});
 });
-
-
