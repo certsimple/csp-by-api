@@ -1,39 +1,39 @@
 var agave = require('agave')('av'),
 	lodash = require('lodash'),
-	appPolicies = require(__dirname+'/policies.js');
+	appPolicies = require(__dirname + '/policies.js');
 
 require('babel-polyfill');
 
 var log = console.log.bind(console);
 
-var domainToWildcard = function(domain){
+var domainToWildcard = function(domain) {
 	var parts = domain.split('.')
 	var wildcard = null
-	if ( parts.length > 1 ) {
-		wildcard = '*.'+parts.splice(1).join('.')
+	if (parts.length > 1) {
+		wildcard = '*.' + parts.splice(1).join('.')
 	}
 	return wildcard
 }
 
-var removeDuplicates = function(policy){
+var removeDuplicates = function(policy) {
 	// After the sort, '*.domain.com' are now first
-	policy.avforEach(function(key){
-		if ( avkind(policy[key]) === 'Array' ) {
+	policy.avforEach(function(key) {
+		if (avkind(policy[key]) === 'Array') {
 			policy[key] = policy[key].sort();
 		}
 	})
 
 	// We will now remove any FQDNs where the wildcard already exists
 	var uniquePolicy = {}
-	policy.avforEach(function(key){
+	policy.avforEach(function(key) {
 		var values = policy[key]
-		if ( avkind(values) === 'Array' ) {
-			if ( ! uniquePolicy[key] ) {
+		if (avkind(values) === 'Array') {
+			if (!uniquePolicy[key]) {
 				uniquePolicy[key] = []
 			}
-			values.forEach(function(value){
+			values.forEach(function(value) {
 				var wildCardParent = domainToWildcard(value)
-				if ( wildCardParent && uniquePolicy[key].includes(wildCardParent) ) {
+				if (wildCardParent && uniquePolicy[key].includes(wildCardParent)) {
 					// log('Skipping', value, 'as we already have', wildCardParent)
 					return
 				}
@@ -47,15 +47,20 @@ var removeDuplicates = function(policy){
 	return uniquePolicy
 }
 
-var makeContentSecurityPolicy = function(currentPolicy, appNames){
+var makeContentSecurityPolicy = function(currentPolicy, appNames) {
 	var combinedPolicy = currentPolicy || {};
-	appNames.forEach(function(appName){
-		var appPolicy = appPolicies[appName];
-		if ( ! appPolicy ) {
-			// Throw a hard error and don't allow our app to start
-			throw new Error('missing CSP policy '+appName)
+	appNames.forEach(function(policyNameOrAppPolicyObj) {
+		var appPolicy;
+		if (lodash.isString(policyNameOrAppPolicyObj)) {
+			appPolicy = appPolicies[policyNameOrAppPolicyObj];
+		} else {
+			appPolicy = policyNameOrAppPolicyObj;
 		}
-		appPolicy.avforEach(function(key){
+		if (!appPolicy) {
+			// Throw a hard error and don't allow our app to start
+			throw new Error('missing CSP policy ' + appName)
+		}
+		appPolicy.avforEach(function(key) {
 			combinedPolicy[key] = lodash.union(combinedPolicy[key], appPolicy[key])
 		})
 	})

@@ -17,8 +17,11 @@
   "author": "Mike MacCana <mike.maccana@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "agave": "^2.0.0",
+    "agave": "^2.2.1",
     "babel-polyfill": "^6.5.0",
     "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.3.0"
   }
 }

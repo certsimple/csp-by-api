@@ -69,6 +69,23 @@ Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helm
 
 **Add more policies!** Send a pull request to add more policies. Include a reference to an official policy if it exists, or state that there is no official policy if none exists.
 
+You can also create your custom policies and provide them to the api: Imagine that stripe is not provided by this library, you can still define it yourself and use it right away.
+
+```javascript
+var stripe = {
+  scriptSrc:  ['js.stripe.com', 'api.stripe.com'],
+  imgSrc: ['q.stripe.com'],
+  connectSrc: ['api.stripe.com'],
+  frameSrc: ['js.stripe.com']
+}
+
+cspByAPI(basePolicy, [
+  stripe,
+  'googleFonts'
+])
+```
+
+
 ## Note
 
 Some of these are just general notes about CSP, but you'll still find them useful
@@ -99,4 +116,3 @@ Then in a script tag on your server:
 For **Twitter**, you'll also need this meta tag - see https://dev.twitter.com/web/embedded-tweets/faq:
 
 	<meta name="twitter:widgets:csp" content="on">
-
