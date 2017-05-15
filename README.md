@@ -69,22 +69,25 @@ Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helm
 
 **Add more policies!** Send a pull request to add more policies. Include a reference to an official policy if it exists, or state that there is no official policy if none exists.
 
-You can also create your custom policies and provide them to the api: Imagine that stripe is not provided by this library, you can still define it yourself and use it right away.
+## Adding custom policies
+
+You can also create your custom policies and provide them to the API: if `exampleThing` is not provided by this library, you can still define it yourself and use it:
 
 ```javascript
-var stripe = {
-  scriptSrc:  ['js.stripe.com', 'api.stripe.com'],
-  imgSrc: ['q.stripe.com'],
-  connectSrc: ['api.stripe.com'],
-  frameSrc: ['js.stripe.com']
+var exampleThing = {
+	scriptSrc:  ['js.example.com', 'api.example.com'],
+	imgSrc: ['q.example.com'],
+	connectSrc: ['api.example.com'],
+	frameSrc: ['js.example.com']
 }
 
 cspByAPI(basePolicy, [
-  stripe,
-  'googleFonts'
+	exampleThing,
+	'googleFonts'
 ])
 ```
 
+You should still send a pull request though!
 
 ## Note
 
