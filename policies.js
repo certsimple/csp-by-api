@@ -139,7 +139,7 @@ module.exports = {
 
 	// Magic Signup: no public policy
 	magicSignup: {
-		scriptSrc:  ['*.magicsignup.com']
+		scriptSrc:  ['magicsignup.com', '*.magicsignup.com']
 	},
 
 	olark: {
