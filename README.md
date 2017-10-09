@@ -1,6 +1,6 @@
-CSP By API significantly cuts down on CSP management by letting developers specify common APIs by name. These are then merged into the base policy to create the final CSP.
+Makes CSP management easier by letting developers specify the services they use by name - these are then merged into the base policy to create the final CSP.
 
-In short: **this module is the difference between specifying 8 domains or 60**.
+In short: **this module is the difference between specifying 8 services you use versus specifying 80+ domains for sifferent types of content**.
 
 ## Included policies
 

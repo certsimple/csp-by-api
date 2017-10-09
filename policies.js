@@ -187,6 +187,7 @@ module.exports = {
 		scriptSrc:  ['static.ads-twitter.com','platform.twitter.com', 'cdn.syndication.twimg.com', 'syndication.twitter.com',  'analytics.twitter.com'],
 		styleSrc: ['platform.twitter.com'],
 		imgSrc: ['pbs.twimg.com', 'abs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
+		connectSrc: ['syndication.twitter.com'],
 		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
 	},
 
