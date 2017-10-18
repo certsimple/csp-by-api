@@ -1,6 +1,6 @@
 Makes CSP management easier by letting developers specify the services they use by name - these are then merged into the base policy to create the final CSP.
 
-In short: **this module is the difference between specifying 8 services you use versus specifying 80+ domains for sifferent types of content**.
+In short: **this module is the difference between specifying 8 services you use versus specifying 80+ domains for different types of content**.
 
 ## Included policies
 
