@@ -1,6 +1,6 @@
-Makes CSP management easier by letting developers specify the services they use by name - these are then merged into the base policy to create the final CSP.
+## Make a CSP policy by specifying services you use instead of hundreds of domains for different types of content.
 
-In short: **this module is the difference between specifying 8 services you use versus specifying 80+ domains for different types of content**.
+`csp-by-api` makes CSP management easier by letting developers specify the services they use by name - these are then merged into the base policy to create the final CSP.
 
 ## Included policies
 
@@ -69,6 +69,10 @@ Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helm
 ## Need another API?
 
 **Add more policies!** Send a pull request to add more policies. Include a reference to an official policy if it exists, or state that there is no official policy if none exists.
+
+## I want to steal this and port it to Ruby / Elixir / Python / Java / etc.
+
+Go for it! Just take `policies.js` (it's just JSON plus comments, hence `.js`) and mak sure you regularly update from this project!
 
 ## Adding custom policies
 
