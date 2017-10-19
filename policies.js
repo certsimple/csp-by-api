@@ -56,7 +56,8 @@ module.exports = {
 	},
 
 	digiCertSiteSeal: {
-		"scriptSrc": ["seal.digicert.com"]
+		"scriptSrc": ["seal.digicert.com"],
+		"imgSrc": ["seal.digicert.com"]
 	},
 
 	googleAnalytics: {
