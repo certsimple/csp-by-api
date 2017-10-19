@@ -8,6 +8,7 @@ This package itself knows the required CSP policies for:
 
  - `braintree` [Braintree Payments](https://developers.braintreepayments.com/reference/client-reference/javascript/v2/best-practices#using-braintree.js-with-a-content-security-policy)
  - `clearbit` [Clearbit](https://clearbit.com/)
+ - `digicert` [DigiCert Site Seal](https://www.digicert.com/ssl-support/digicert-security-seal.htm)
  - `googleAnalytics` [Google Analytics](https://www.google.co.uk/analytics/)
  - `googleFonts` [Google Fonts](https://www.google.com/fonts)
  - `gravatar` [Gravatar](https://en.gravatar.com/)

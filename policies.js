@@ -55,6 +55,10 @@ module.exports = {
 		]
 	},
 
+	digicertSiteSeal: {
+		"scriptSrc": ["seal.digicert.com"]
+	},
+
 	googleAnalytics: {
 		"scriptSrc": [
 			"https://ajax.googleapis.com",
