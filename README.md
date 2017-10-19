@@ -51,7 +51,8 @@ For your app. For example:
 		reportOnly: true
 	}
 
-	// Then add the apps you use. csp-by-api will combine them for you.
+Then add the apps you use. `csp-by-api` will combine them for you:
+
 	var policy = cspByAPI(basePolicy, [
 		'twitter',
 		'mixpanel',
@@ -72,7 +73,7 @@ Then, for example, using Express and [Helmet](https://www.npmjs.com/package/helm
 
 ## I want to steal this and port it to Ruby / Elixir / Python / Java / etc.
 
-Go for it! Just take `policies.js` (it's just JSON plus comments, hence `.js`) and mak sure you regularly update from this project!
+Go for it! Just take `policies.js` (it's just JSON plus comments, hence `.js`) and make sure you regularly update from this project!
 
 ## Adding custom policies
 
