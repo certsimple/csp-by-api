@@ -27,8 +27,8 @@ var removeDuplicates = function(policy) {
 	var uniquePolicy = {}
 	policy.avforEach(function(key) {
 		var values = policy[key]
-		if (avkind(values) === 'Array') {
-			if (!uniquePolicy[key]) {
+		if ( avkind(values) === 'Array' ) {
+			if ( ! uniquePolicy[key] ) {
 				uniquePolicy[key] = []
 			}
 			values.forEach(function(value) {
