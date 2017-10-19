@@ -2,8 +2,6 @@ var agave = require('agave')('av'),
 	lodash = require('lodash'),
 	appPolicies = require(__dirname + '/policies.js');
 
-require('babel-polyfill');
-
 var log = console.log.bind(console);
 
 var domainToWildcard = function(domain) {
