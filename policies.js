@@ -55,7 +55,7 @@ module.exports = {
 		]
 	},
 
-	digicertSiteSeal: {
+	digiCertSiteSeal: {
 		"scriptSrc": ["seal.digicert.com"]
 	},
 
