@@ -2,6 +2,8 @@
 
 `csp-by-api` makes CSP management easier by letting developers specify the services they use by name - these are then merged into the base policy to create the final CSP.
 
+<img src="https://travis-ci.org/certsimple/csp-by-api.svg?branch=master"/>
+
 ## Included policies
 
 This package itself knows the required CSP policies for:
