@@ -1,4 +1,4 @@
-## Make a CSP policy by specifying services you use instead of hundreds of domains for different types of content.
+## Prevent Cross Site Scripting by building a CSP policy specifying services you use
 
 `csp-by-api` makes CSP management easier by letting developers specify the services they use by name - these are then merged into the base policy to create the final CSP.
 
