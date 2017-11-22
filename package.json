@@ -1,6 +1,6 @@
 {
   "name": "csp-by-api",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Easily build a Content Security Policy (CSP) by specifying APIs by name",
   "main": "index.js",
   "scripts": {
