@@ -23,7 +23,7 @@ suite('combining policies', function() {
 			fontSrc: [],
 			imgSrc: [CSP_SELF, 'data:'],
 			connectSrc: [CSP_SELF],
-			frameSrc: [],
+			childSrc: [],
 			reportUri: "/csp-violation",
 			reportOnly: true
 		}
@@ -38,7 +38,7 @@ suite('combining policies', function() {
 				'syndication.twitter.com'
 			],
 			connectSrc: ["'self'", 'api.mixpanel.com', 'api.stripe.com'],
-			frameSrc: ['js.stripe.com', 'platform.twitter.com', 'syndication.twitter.com'],
+			childSrc: ['js.stripe.com', 'platform.twitter.com', 'syndication.twitter.com'],
 			reportUri: '/csp-violation',
 			reportOnly: true
 		}
@@ -65,7 +65,7 @@ suite('combining policies', function() {
 			fontSrc: [],
 			imgSrc: [CSP_SELF, 'data:'],
 			connectSrc: [CSP_SELF],
-			frameSrc: [],
+			childSrc: [],
 			reportUri: "/csp-violation",
 			reportOnly: true
 		}
@@ -95,7 +95,7 @@ suite('combining policies', function() {
 			"connectSrc": [
 				"'self'"
 			],
-			"frameSrc": [
+			"childSrc": [
 				"platform.twitter.com",
 				"syndication.twitter.com"
 			],
@@ -113,7 +113,7 @@ suite('combining policies', function() {
 			fontSrc: [],
 			imgSrc: [CSP_SELF, 'data:'],
 			connectSrc: [CSP_SELF],
-			frameSrc: [],
+			childSrc: [],
 			reportUri: "/csp-violation",
 			reportOnly: true
 		}
@@ -122,7 +122,7 @@ suite('combining policies', function() {
 			scriptSrc: ['js.stripe.com', 'api.stripe.com'],
 			imgSrc: ['q.stripe.com'],
 			connectSrc: ['api.stripe.com'],
-			frameSrc: ['js.stripe.com']
+			childSrc: ['js.stripe.com']
 		};
 
 		var rollbar = {
