@@ -29,18 +29,62 @@ suite('combining policies', function() {
 		}
 
 		var actual = makeContentSecurityPolicy(basePolicy, ['twitter', 'mixpanel', 'googleFonts', 'typekit', 'stripe', 'ractive'])
+
 		var expected = {
-			defaultSrc: ["'self'"],
-			scriptSrc: ["'self'", "'unsafe-eval'", 'cdn.mxpnl.com', 'js.stripe.com', 'platform.twitter.com', 'syndication.twitter.com', 'use.typekit.net'],
-			styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com', 'platform.twitter.com', 'use.typekit.net'],
-			fontSrc: ['data:', 'fonts.googleapis.com', 'fonts.gstatic.com', 'use.typekit.net'],
-			imgSrc: ["'self'", 'abs.twimg.com', 'cdn.mxpnl.com', 'data:', 'p.typekit.net', 'pbs.twimg.com', 'platform.twitter.com', 'q.stripe.com',
-				'syndication.twitter.com'
+			"defaultSrc": [
+				"'self'"
 			],
-			connectSrc: ["'self'", 'api.mixpanel.com', 'api.stripe.com'],
-			childSrc: ['js.stripe.com', 'platform.twitter.com', 'syndication.twitter.com'],
-			reportUri: '/csp-violation',
-			reportOnly: true
+			"scriptSrc": [
+				"'self'",
+				"'unsafe-eval'",
+				"analytics.twitter.com",
+				"api.stripe.com",
+				"cdn.mxpnl.com",
+				"cdn.syndication.twimg.com",
+				"js.stripe.com",
+				"platform.twitter.com",
+				"static.ads-twitter.com",
+				"syndication.twitter.com",
+				"use.typekit.net"
+			],
+			"styleSrc": [
+				"'self'",
+				"'unsafe-inline'",
+				"fonts.googleapis.com",
+				"platform.twitter.com",
+				"use.typekit.net"
+			],
+			"fontSrc": [
+				"data:",
+				"fonts.googleapis.com",
+				"fonts.gstatic.com",
+				"themes.googleusercontent.com",
+				"use.typekit.net"
+			],
+			"imgSrc": [
+				"'self'",
+				"abs.twimg.com",
+				"cdn.mxpnl.com",
+				"data:",
+				"p.typekit.net",
+				"pbs.twimg.com",
+				"platform.twitter.com",
+				"q.stripe.com",
+				"syndication.twitter.com"
+			],
+			"connectSrc": [
+				"'self'",
+				"api.mixpanel.com",
+				"api.stripe.com",
+				"syndication.twitter.com"
+			],
+			"childSrc": [
+				"js.stripe.com",
+				"platform.twitter.com",
+				"syndication.twitter.com"
+			],
+			"reportUri": "/csp-violation",
+			"reportOnly": true
 		}
 		expected.avforEach(function(key) {
 			if (avkind(expected[key]) === 'Array') {
@@ -76,7 +120,9 @@ suite('combining policies', function() {
 			],
 			"scriptSrc": [
 				"'self'",
-				"*.twitter.com" // I.e., there's only the wildcard.
+				"*.twitter.com",
+				"cdn.syndication.twimg.com",
+				"static.ads-twitter.com"
 			],
 			"styleSrc": [
 				"'self'",
@@ -93,7 +139,8 @@ suite('combining policies', function() {
 				"syndication.twitter.com"
 			],
 			"connectSrc": [
-				"'self'"
+				"'self'",
+				"syndication.twitter.com"
 			],
 			"childSrc": [
 				"platform.twitter.com",
