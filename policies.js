@@ -27,7 +27,7 @@ module.exports = {
 			"checkout.paypal.com",
 			DATA
 		],
-		"childSrc": [
+		"frameSrc": [
 			"assets.braintreegateway.com",
 			"c.paypal.com"
 		]
@@ -156,7 +156,7 @@ module.exports = {
 		scriptSrc: ['*.olark.com', CSP_UNSAFE_INLINE],
 		connectSrc: ['*.olark.com'], // Always <number>-events.olark.com
 		styleSrc: [CSP_UNSAFE_INLINE, 'static.olark.com'],
-		childSrc: ['static.olark.com'],
+		frameSrc: ['static.olark.com'],
 		imgSrc: ['log.olark.com', 'static.olark.com'],
 		mediaSrc: ['static.olark.com']
 	},
@@ -183,7 +183,7 @@ module.exports = {
 		scriptSrc:  ['js.stripe.com', 'api.stripe.com'],
 		imgSrc: ['q.stripe.com'],
 		connectSrc: ['api.stripe.com'],
-		childSrc: ['js.stripe.com']
+		frameSrc: ['js.stripe.com']
 	},
 
 	// No public policy
@@ -193,7 +193,7 @@ module.exports = {
 		styleSrc: ['platform.twitter.com'],
 		imgSrc: ['pbs.twimg.com', 'abs.twimg.com', 'syndication.twitter.com', 'platform.twitter.com'],
 		connectSrc: ['syndication.twitter.com'],
-		childSrc: ['syndication.twitter.com', 'platform.twitter.com']
+		frameSrc: ['syndication.twitter.com', 'platform.twitter.com']
 	},
 
 	twitterAnalytics: {
@@ -214,7 +214,7 @@ module.exports = {
 	},
 
 	vimeo: {
-		childSrc: ['player.vimeo.com']
+		frameSrc: ['player.vimeo.com']
 	}
 
 }

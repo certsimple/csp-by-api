@@ -48,7 +48,7 @@ For your app. For example:
 		fontSrc: [],
 		imgSrc: [CSP_SELF, 'data:'],
 		connectSrc: [CSP_SELF],
-		childSrc: [],
+		frameSrc: [],
 		reportUri: "/csp-violation",
 		reportOnly: true
 	}
@@ -86,7 +86,7 @@ var exampleThing = {
 	scriptSrc:  ['js.example.com', 'api.example.com'],
 	imgSrc: ['q.example.com'],
 	connectSrc: ['api.example.com'],
-	childSrc: ['js.example.com']
+	frameSrc: ['js.example.com']
 }
 
 cspByAPI(basePolicy, [
